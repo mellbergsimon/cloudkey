@@ -6,7 +6,7 @@ application := $(shell basename `pwd`)
 
 GO_LDFLAGS := "-X github.com/jnovack/go-version.Application=${application} -X github.com/jnovack/go-version.Version=${version} -X github.com/jnovack/go-version.Revision=${revision} -X github.com/jnovack/go-version.BuildDate=${build_date}"
 
-all: build
+all: buildnew
 
 .PHONY: install
 install:
@@ -16,3 +16,6 @@ install:
 .PHONY: build
 build:
 	GOOS=linux GOARCH=arm64 go build -ldflags $(GO_LDFLAGS) cloudkey.go
+
+buildnew:
+	GOOS=linux GOARCH=arm64 go build cloudkey.go

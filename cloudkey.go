@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"os"
 	"os/signal"
+	"syscall"
 
 	_ "github.com/jnovack/go-version"
 
@@ -39,7 +40,11 @@ func init() {
 		os.Exit(0)
 	}
 
-	pid, _ := pidfile.Create(opts.Pidfile)
+	pid, err := pidfile.Create(opts.Pidfile)
+	if err != nil {
+			fmt.Printf("Error creating PID file: %s\n", err)
+			os.Exit(1)
+	}
 
 	// Setup Service
 	// https://fabianlee.org/2017/05/21/golang-running-a-go-binary-as-a-systemd-service-on-ubuntu-16-04/
@@ -47,7 +52,7 @@ func init() {
 	// setup signal catching
 	sigs := make(chan os.Signal, 1)
 	// catch all signals since not explicitly listing
-	signal.Notify(sigs)
+	signal.Notify(sigs, syscall.SIGINT, syscall.SIGTERM)
 	// method invoked upon seeing signal
 	go func() {
 		s := <-sigs

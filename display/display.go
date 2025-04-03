@@ -28,6 +28,8 @@ type CmdLineOpts struct {
 	Pidfile string
 }
 
+
+
 func init() {
 	myLeds = leds.LEDS{}
 	myLeds.LED("blue").Off()
@@ -74,12 +76,14 @@ func init() {
 	myLeds.LED("white").Off()
 }
 
+
+
 // New initializes the screens
 func New(opts CmdLineOpts) {
 	// Build the screens in the background
-	buildNetwork(0, opts.Demo)
-	buildSpeedTest(1, opts.Demo)
-
+	//buildSpeedTest(1, opts.Demo)
+	buildSystemStats(0, opts.Demo)
+	buildNetwork(1, opts.Demo)
 	// Start the carousel!
 	startFadeCarousel(opts.Delay)
 }

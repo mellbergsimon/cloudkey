@@ -38,4 +38,6 @@ func init() {
 	assets["network"] = network
 	assets["upload"] = upload
 	assets["uploadIdle"] = uploadIdle
+	assets["ram"] = ram
+	assets["cpu"] = cpu
 }
