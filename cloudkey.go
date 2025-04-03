@@ -11,7 +11,8 @@ import (
 	"github.com/tabalt/pidfile"
 
 	"github.com/coreos/pkg/flagutil"
-	"github.com/jnovack/cloudkey/display"
+	// "github.com/jnovack/cloudkey/display"
+	"cloudkey/display"
 	_ "github.com/jnovack/cloudkey/fonts"
 )
 

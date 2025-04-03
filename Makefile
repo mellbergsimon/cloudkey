@@ -15,4 +15,4 @@ install:
 
 .PHONY: build
 build:
-	GOOS=linux GOARCH=arm go build -ldflags $(GO_LDFLAGS) cloudkey.go
+	GOOS=linux GOARCH=arm64 go build -ldflags $(GO_LDFLAGS) cloudkey.go
