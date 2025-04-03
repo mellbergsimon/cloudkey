@@ -139,12 +139,6 @@ func buildSystemStats(i int, demo bool) {
 
 	screen := screens[i]
 
-	// Clear the screen
-	draw.Draw(screen, screen.Bounds(), image.Black, image.ZP, draw.Src)
-
-	// Draw static labels for CPU and RAM
-	draw.Draw(screen, image.Rect(2, 2, 2+16, 22+16), images.Load("ram"), image.ZP, draw.Src)
-	draw.Draw(screen, image.Rect(2, 22, 2+16, 22+16), images.Load("cpu"), image.ZP, draw.Src)
 
 	// Loop to update stats periodically
 	go func() {
@@ -161,8 +155,18 @@ func buildSystemStats(i int, demo bool) {
 
 				// fmt.Println("Used:", used)
 				// fmt.Println("Total:", total)
-				fmt.Println("CPU Usage:", cpuInfo)
+				// fmt.Println("CPU Usage:", cpuInfo)
 
+
+				// Clear the screen
+				draw.Draw(screen, screen.Bounds(), image.Black, image.ZP, draw.Src)
+				
+
+				// Draw static labels for CPU and RAM
+				draw.Draw(screen, image.Rect(2, 2, 2+16, 22+16), images.Load("ram"), image.ZP, draw.Src)
+				draw.Draw(screen, image.Rect(2, 22, 2+16, 22+16), images.Load("cpu"), image.ZP, draw.Src)
+
+				// Clear the screen
 				write(screen, ramInfo, 22, 1, 12, "lato-regular")
 				write(screen, cpuInfo, 22, 21, 12, "lato-regular")
 
